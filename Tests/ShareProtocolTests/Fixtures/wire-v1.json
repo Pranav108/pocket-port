@@ -1,0 +1,15 @@
+{
+  "qrString": "http://pranavs-mac.local:49152/share-md/v1/00112233-4455-6677-8899-aabbccddeeff/file#token=AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8&expires=2000000000",
+  "downloadURL": "http://pranavs-mac.local:49152/share-md/v1/00112233-4455-6677-8899-aabbccddeeff/file",
+  "acknowledgmentURL": "http://pranavs-mac.local:49152/share-md/v1/00112233-4455-6677-8899-aabbccddeeff/ack",
+  "authorizationHeader": "Bearer AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "bodyBase64": "77u/IyBTaGFyZS5tZA0KaGVsbG8NCg==",
+  "headers": {
+    "Content-Type": "text/markdown; charset=utf-8",
+    "Content-Length": "22",
+    "Cache-Control": "no-store",
+    "X-ShareMD-Filename": "csOpc3Vtw6kubWQ",
+    "X-ShareMD-Project": "6KiI55S7IPCfk5M",
+    "X-ShareMD-SHA256": "81d830c029c10df4ffb7c682eb1b8782142113735e812081bfc46b72d7ce4e65"
+  }
+}
