@@ -2,25 +2,28 @@
 
 Share Markdown, plain text, PDFs, and images from your Mac to your iPhone over trusted Wi-Fi. The helper opens a temporary HTTP share, and the iPhone keeps a byte-for-byte copy for offline viewing.
 
-## Requirements
-
-- Mac with macOS 14 or later, Apple Silicon or Intel.
-- iPhone with iOS 17 or later.
-- A trusted Wi-Fi network that lets the Mac and iPhone reach each other.
-
 ## Install the Mac helper
 
 ### One-line install from GitHub
 
-On macOS 14 or later with Xcode or the Command Line Tools installed, paste this into Terminal. It builds the current `main` branch and installs `pocket-port` in `~/.local/bin` without sudo.
+Paste this into Terminal on macOS 14 or later, on Apple Silicon or Intel. The command installs `pocket-port` from GitHub’s `main` branch into `~/.local/bin`. Rerun it to update.
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/Pranav108/pocket-port/main/install.sh | bash -s -- --add-to-path
 ```
 
-Open a new Terminal window and run `pocket-port --help`. The `--add-to-path` flag opts into adding `~/.local/bin` to your zsh or Bash startup file when needed. Rerun the same command to update.
+Open a new Terminal window and verify the install.
 
-If you’re missing the Command Line Tools, run `xcode-select --install` and wait for that installer to finish first. You can [read the installer](install.sh) or use the manual steps below.
+```sh
+command -v pocket-port
+pocket-port --help
+```
+
+The `--add-to-path` flag adds `~/.local/bin` to your zsh or Bash startup file when needed. If you have neither Xcode nor the Command Line Tools, run the following command first and wait for Apple’s installer to finish. [Read the installer script](install.sh)
+
+```sh
+xcode-select --install
+```
 
 ### macOS installer package
 
@@ -40,7 +43,7 @@ If Terminal cannot find the source-built command, add `export PATH="$HOME/.local
 
 ## Share a file
 
-Run the command from any folder.
+Connect your Mac and iPhone to the same trusted Wi-Fi network. The iPhone app requires iOS 17 or later. Run the command from any folder.
 
 ```sh
 pocket-port
