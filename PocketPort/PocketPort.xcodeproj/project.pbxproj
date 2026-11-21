@@ -11,6 +11,7 @@
 		01D72E298E77854DACE1793F /* ImportStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13680FB2105A63C29357B3CD /* ImportStore.swift */; };
 		12EE04BFA1C31D2F8E06B468 /* ShareMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */; };
 		28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E5E79DF0834291ADEBBD7C /* Assets.xcassets */; };
+		ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */; };
 		D40D5F0131954748A187AB49 /* LocalHTMLPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */; };
 		2AF32D4A993C6D789D7E0748 /* Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA2A278847D4E2C6FC7986 /* Base64URL.swift */; };
 		35B3AD97FDA5AF424BA85EDD /* PocketPortProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190FCA0073315605D0EB6B32 /* PocketPortProtocol.framework */; };
@@ -100,6 +101,7 @@
 		82FB75CCA028416389A94351 /* FilesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesSettingsView.swift; sourceTree = "<group>"; };
 		82FB75CCA028416389A94352 /* WiFiAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiAvailability.swift; sourceTree = "<group>"; };
 		90E5E79DF0834291ADEBBD7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		97B67628B81E0C5AF1312B88 /* PocketPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7D322A277BDAAB9235B526 /* ShareLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLink.swift; sourceTree = "<group>"; };
 		AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMetadata.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				82FB75CCA028416389A94351 /* FilesSettingsView.swift */,
 				28DB614B881176BE95A139CD /* PocketPortApp.swift */,
 				90E5E79DF0834291ADEBBD7C /* Assets.xcassets */,
+				6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */,
 				9B67137D3E960D964FD740CB /* Import */,
 				B8C782E29C46C2FEF4B3C6ED /* Reader */,
 				2BAF453546AC025EFFDFB3B2 /* Scanner */,
@@ -380,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */,
+				ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

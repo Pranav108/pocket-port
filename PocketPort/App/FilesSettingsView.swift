@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct FilesSettingsView: View {
+    private static let privacyPolicy = URL(string: "https://pranav108.github.io/pocket-port/privacy.html")!
+    private static let termsOfUse = URL(string: "https://pranav108.github.io/pocket-port/terms.html")!
+
     @Binding var confirmBeforeDeleting: Bool
     let byteCount: Int64
     let isEmpty: Bool
@@ -24,8 +27,9 @@ struct FilesSettingsView: View {
                         HowItWorksView()
                     }
                     NavigationLink("Privacy Policy") {
-                        info("Privacy Policy", text: "PocketPort transfers files directly from your Mac over local Wi-Fi and stores copies on this iPhone. Camera access is used to scan share codes. Local Network access is used to reach the Mac. You choose where a copy goes when you share it from Files, and you can delete downloaded copies in the app.")
+                        privacyInfo
                     }
+                    Link("Terms of Use", destination: Self.termsOfUse)
                     LabeledContent("Version", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—")
                 }
             }
@@ -55,13 +59,16 @@ struct FilesSettingsView: View {
         }
     }
 
-    private func info(_ title: String, text: String) -> some View {
+    private var privacyInfo: some View {
         ScrollView {
-            Text(text)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(20)
+            VStack(alignment: .leading, spacing: 16) {
+                Text("PocketPort transfers files directly from your Mac over local Wi-Fi and stores copies on this device. Camera access is used to scan share codes. Local Network access is used to reach your Mac. You can delete downloaded copies in PocketPort and choose where to send any copy you share.")
+                Link("Read the full Privacy Policy", destination: Self.privacyPolicy)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(20)
         }
-        .navigationTitle(title)
+        .navigationTitle("Privacy Policy")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -26,7 +26,7 @@ Create a draft GitHub Release with a version tag such as `v1.1.1` targeting the 
 1. In your Apple Developer account, register the bundle identifier `dev.pocketport.app` and create the PocketPort iOS record in App Store Connect using that identifier. Use the release team in Xcode.
 2. In `PocketPort.xcodeproj`, set the version and increment the build number before each upload. Archive the `PocketPort` scheme for a generic iOS device and use **Distribute App** in Xcode Organizer to upload to App Store Connect.
 3. Start with an external TestFlight group. Add the uploaded build, submit it for TestFlight review as required, and share a public TestFlight invitation link. Testers install Apple’s TestFlight app and accept the link on their iPhone.
-4. For a public launch, prepare the App Store listing, screenshots, support URL, privacy disclosures, and any export compliance answers in App Store Connect. Use the published [privacy policy](privacy.md) for the privacy policy URL. Select the build and submit it for App Review. After Apple approves it, release the app and add its App Store link to the README and Mac release notes.
+4. For a public launch, prepare the App Store listing, screenshots, support URL, privacy disclosures, and any export compliance answers in App Store Connect. Use the published [Privacy Policy](https://pranav108.github.io/pocket-port/privacy.html) for the Privacy Policy URL and [PocketPort Support](https://pranav108.github.io/pocket-port/) for the Support URL. Select the build and submit it for App Review. After Apple approves it, release the app and add its App Store link to the README and Mac release notes.
 
 ### App Review instructions
 

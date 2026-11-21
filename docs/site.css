@@ -1,0 +1,107 @@
+:root {
+  color-scheme: light;
+  --ink: #1b3533;
+  --secondary: #496663;
+  --accent: #00645c;
+  --banner: #103e3d;
+  --page: #f8faf7;
+  --line: #cbd9d3;
+  --mint: #c5eee1;
+  font: 100%/1.65 "Avenir Next", Avenir, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--page);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; }
+
+a { color: var(--accent); text-underline-offset: .18em; }
+
+a:hover { text-decoration-thickness: .13em; }
+
+:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+.wrap { width: min(70rem, calc(100% - 3rem)); margin-inline: auto; }
+
+.skip-link { position: absolute; z-index: 1; inset: .75rem auto auto .75rem; padding: .6rem .85rem; background: white; }
+
+.skip-link:not(:focus) { transform: translateY(-200%); }
+
+.masthead { background: #fff; border-bottom: 1px solid var(--line); }
+
+.masthead-inner, .masthead nav, .document-meta, .site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1.45rem;
+}
+
+.masthead-inner { min-height: 4.7rem; justify-content: space-between; padding-block: .65rem; }
+
+.brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--ink); font-weight: 700; text-decoration: none; }
+
+.brand img { border-radius: 22%; }
+
+.masthead nav a { font-size: .95rem; text-decoration: none; }
+
+.masthead nav a[aria-current], .masthead nav a:hover { text-decoration: underline; }
+
+.banner { padding: clamp(2.7rem, 7vw, 5rem) 0; background: var(--banner); color: #fff; }
+
+.banner h1, .document h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+
+.banner h1 { margin: 0; font-size: clamp(2.45rem, 7vw, 4.05rem); line-height: 1.04; letter-spacing: -.045em; }
+
+.banner p { margin: .9rem 0 0; color: var(--mint); font-size: clamp(1rem, 2.5vw, 1.2rem); }
+
+.layout { display: grid; grid-template-columns: minmax(11rem, .75fr) minmax(0, 2.5fr); gap: clamp(2rem, 6vw, 5rem); padding-block: 2.65rem 4.5rem; }
+
+.contents { position: sticky; top: 1.25rem; align-self: start; border-left: 1px solid var(--line); padding-left: 1rem; }
+
+.contents h2 { margin: 0 0 .4rem; font-size: .92rem; }
+
+.contents a { display: block; width: fit-content; padding-block: .18rem; font-size: .92rem; }
+
+.document { max-width: 66ch; }
+
+.document p, .document li { margin-top: 0; }
+
+.document p, .document ul, .document ol { margin-bottom: 1rem; }
+
+.document li + li { margin-top: .5rem; }
+
+.document ul, .document ol { padding-left: 1.35em; }
+
+.document-meta { justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: .65rem; border-bottom: 1px solid var(--line); }
+
+.document-meta p { margin: 0; color: var(--secondary); font-size: .9rem; }
+
+.document button { font: inherit; font-size: .85rem; color: var(--accent); padding: .28rem .65rem; background: none; border: 1px solid var(--line); border-radius: .3rem; cursor: pointer; }
+
+.document button:hover { background: var(--mint); }
+
+.document section { scroll-margin-top: 1.3rem; }
+
+.document section + section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+
+.document h2 { margin: 0 0 .65rem; font-size: clamp(1.55rem, 3.5vw, 2rem); line-height: 1.2; }
+
+.document code { font-size: .9em; background: #eaf1eb; padding: .1em .3em; border-radius: .2rem; }
+
+.site-footer { border-top: 1px solid var(--line); padding-block: 1.1rem; font-size: .9rem; }
+
+@media (max-width: 44rem) {
+  .wrap { width: calc(100% - 2rem); }
+  .layout { grid-template-columns: 1fr; gap: 1.7rem; padding-block: 1.8rem 3rem; }
+  .contents { position: static; }
+}
+
+@media print {
+  .masthead, .site-footer, .contents, .skip-link, [data-print] { display: none; }
+  .banner { padding: 0 0 1rem; background: none; }
+  .banner, .banner p { color: black; }
+  .layout { display: block; padding: 0; }
+  .wrap, .document { width: 100%; max-width: none; }
+  h2 { break-after: avoid; }
+}

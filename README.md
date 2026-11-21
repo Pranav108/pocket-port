@@ -90,4 +90,4 @@ Use `swift test` for the Mac package. The shared **PocketPort** Xcode scheme inc
 
 The CLI uses Apple’s Network framework. The app uses Foundation’s Markdown parser and native SwiftUI block views. Neither build needs an external Swift package.
 
-[Privacy policy](docs/privacy.md)
+[Privacy Policy](https://pranav108.github.io/pocket-port/privacy.html) · [Terms of Use](https://pranav108.github.io/pocket-port/terms.html) · [Support](https://pranav108.github.io/pocket-port/)
