@@ -10,9 +10,23 @@ Share Markdown, plain text, PDFs, and images from your Mac to your iPhone over t
 
 ## Install the Mac helper
 
+### One-line install from GitHub
+
+On macOS 14 or later with Xcode or the Command Line Tools installed, paste this into Terminal. It builds the current `main` branch and installs `pocket-port` in `~/.local/bin` without sudo.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Pranav108/pocket-port/main/install.sh | bash -s -- --add-to-path
+```
+
+Open a new Terminal window and run `pocket-port --help`. The `--add-to-path` flag opts into adding `~/.local/bin` to your zsh or Bash startup file when needed. Rerun the same command to update.
+
+If you’re missing the Command Line Tools, run `xcode-select --install` and wait for that installer to finish first. You can [read the installer](install.sh) or use the manual steps below.
+
+### macOS installer package
+
 Download the signed `pocket-port-<version>-macos-universal.pkg` when it is available on [GitHub Releases](https://github.com/Pranav108/pocket-port/releases). Open it to install or update `pocket-port`. The installer works on Apple Silicon and Intel, and it installs to `/usr/local/bin`. It requires neither Xcode nor Homebrew. Check the install in Terminal with `pocket-port --help`.
 
-### Build from source
+### Manual build from source
 
 This option is available before the first installer release. It requires Xcode or the Xcode Command Line Tools.
 
