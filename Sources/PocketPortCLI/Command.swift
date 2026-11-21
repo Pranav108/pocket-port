@@ -9,7 +9,7 @@ struct Arguments {
     Usage: pocket-port [--project <label>] [--] [file]
     Run without a file to share the only eligible file in this folder.
     If this folder has several eligible files, pass a filename or path.
-    Share Markdown, text, PDFs, and images on the same trusted Wi-Fi.
+    Share Markdown, text, HTML, PDFs, and images on the same trusted Wi-Fi.
     The QR expires in three minutes. Keep the Mac lid open during sharing.
     """
     var path: String?

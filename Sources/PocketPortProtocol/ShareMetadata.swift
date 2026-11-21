@@ -4,11 +4,13 @@ import Foundation
 public enum ShareFileFormat: String, CaseIterable, Sendable {
     case markdown = "Markdown"
     case text = "Text"
+    case html = "HTML"
     case pdf = "PDF"
     case image = "Image"
 
     private static let documentTypes: [String: Self] = [
-        "md": .markdown, "markdown": .markdown, "txt": .text, "pdf": .pdf
+        "md": .markdown, "markdown": .markdown, "txt": .text, "pdf": .pdf,
+        "htm": .html, "html": .html
     ]
 
     private static let imageTypes = [
@@ -32,7 +34,7 @@ public enum ShareFileFormat: String, CaseIterable, Sendable {
         }
     }
 
-    public var requiresUTF8: Bool { self == .markdown || self == .text }
+    public var requiresUTF8: Bool { self == .markdown || self == .text || self == .html }
 
     public var maximumByteCount: Int {
         requiresUTF8 ? ShareMetadata.maximumFileBytes : 25 * 1024 * 1024
@@ -42,6 +44,7 @@ public enum ShareFileFormat: String, CaseIterable, Sendable {
         switch self {
         case .markdown: return ShareMetadata.contentType
         case .text: return "text/plain; charset=utf-8"
+        case .html: return "application/octet-stream"
         case .pdf: return "application/pdf"
         case .image: return Self.imageTypes[Self.fileExtension(filename)] ?? "application/octet-stream"
         }

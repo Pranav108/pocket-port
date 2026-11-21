@@ -209,6 +209,7 @@ struct ImportedFilesView: View {
         switch format {
         case .image: return "photo"
         case .pdf: return "doc.richtext"
+        case .html: return "chevron.left.forwardslash.chevron.right"
         default: return "doc.text"
         }
     }

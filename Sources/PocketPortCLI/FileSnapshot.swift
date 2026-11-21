@@ -56,7 +56,7 @@ struct FileSnapshot {
             guard bytes.count <= limit else { throw limitError }
         }
         if format.requiresUTF8, String(bytes: bytes, encoding: .utf8) == nil {
-            throw CLIError("Text files require UTF-8 encoding.")
+            throw CLIError("Markdown, text, and HTML files require UTF-8 encoding.")
         }
         let parent = url.deletingLastPathComponent().standardizedFileURL.lastPathComponent
         do {

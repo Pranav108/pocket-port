@@ -20,6 +20,21 @@ final class TransferClientTests: XCTestCase {
         XCTAssertEqual(download.metadata.project, "Project One")
     }
 
+    func testHTMLDownloadPreservesBytesAndFilenameAfterReopen() async throws {
+        let client = TransferClient(protocolClasses: [FixtureURLProtocol.self])
+        let share = try link(host: "html.local")
+        let download = try await client.download(share)
+        XCTAssertEqual(download.metadata.format, .html)
+        XCTAssertEqual(download.data, FixtureURLProtocol.html)
+
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: root) }
+        _ = try await ImportStore(root: root).commit(download, shareID: share.shareID)
+        let reopened = try await ImportStore(root: root).read(id: share.shareID)
+        XCTAssertEqual(reopened.record.filename, "Report.HTM")
+        XCTAssertEqual(reopened.data, FixtureURLProtocol.html)
+    }
+
     func testShortAndCorruptedResponsesFail() async throws {
         let client = TransferClient(protocolClasses: [FixtureURLProtocol.self])
         for host in ["truncated.local", "corrupted.local"] {
@@ -73,6 +88,7 @@ private final class FixtureURLProtocol: URLProtocol {
     static let token = String(repeating: "A", count: 43)
     static let original = Data([0xef, 0xbb, 0xbf]) + Data("# One\r\n".utf8)
     static let binary = Data("%PDF-1.7\n".utf8) + Data([0xff, 0xfe])
+    static let html = Data("<!doctype html><h1>Local HTML ✓</h1>\r\n".utf8)
     static let headers: [String: String] = [
         "Content-Type": ShareMetadata.contentType,
         "Content-Length": String(original.count),
@@ -97,6 +113,16 @@ private final class FixtureURLProtocol: URLProtocol {
             respond(status: 204)
         case ("GET", "file", "complete.local"):
             respond(status: 200, headers: Self.headers, data: Self.original)
+        case ("GET", "file", "html.local"):
+            do {
+                let metadata = try ShareMetadata(filename: "Report.HTM", sha256: ShareMetadata.digest(of: Self.html))
+                var headers = metadata.headers
+                headers["Content-Type"] = "application/octet-stream"
+                headers["Content-Length"] = String(Self.html.count)
+                respond(status: 200, headers: headers, data: Self.html)
+            } catch {
+                client?.urlProtocol(self, didFailWithError: error)
+            }
         case ("GET", "file", "binary.local"):
             do {
                 let metadata = try ShareMetadata(filename: "report.pdf", sha256: ShareMetadata.digest(of: Self.binary))

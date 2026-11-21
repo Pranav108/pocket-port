@@ -51,6 +51,33 @@ final class PocketPortUITests: XCTestCase {
     }
 
     @MainActor
+    func testStaticHTMLPreviewAndOfflineReopen() {
+        let app = launchWithFixtures()
+        let heading = app.descendants(matching: .any)
+            .matching(NSPredicate(format: "label == %@", "Offline HTML report")).firstMatch
+        app.buttons["scan"].tap()
+        app.buttons["fixture-html"].tap()
+        XCTAssertTrue(heading.waitForExistence(timeout: 8))
+        XCTAssertTrue(app.staticTexts["Saved offline"].exists)
+        XCTAssertTrue(app.staticTexts["Ready"].exists)
+        XCTAssertTrue(app.staticTexts["External styles are filtered"].exists)
+        XCTAssertTrue(app.staticTexts["Static report"].exists)
+        XCTAssertFalse(app.staticTexts["JavaScript executed"].exists)
+        XCTAssertFalse(app.staticTexts["Inline styles failed"].exists)
+        app.links["External link"].tap()
+        XCTAssertTrue(heading.exists)
+
+        app.terminate()
+        app.launchArguments.append("--pocketport-ui-test-no-wifi")
+        app.launch()
+        let row = app.descendants(matching: .any)
+            .matching(identifier: "import-00000000-0000-4000-8000-000000000004").firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        row.tap()
+        XCTAssertTrue(heading.waitForExistence(timeout: 8))
+    }
+
+    @MainActor
     private func launchWithFixtures(wifiConnected: Bool = true) -> XCUIApplication {
         let app = XCUIApplication()
         app.launchArguments = ["--pocketport-ui-test", UUID().uuidString]

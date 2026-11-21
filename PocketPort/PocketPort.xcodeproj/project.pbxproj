@@ -11,6 +11,7 @@
 		01D72E298E77854DACE1793F /* ImportStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13680FB2105A63C29357B3CD /* ImportStore.swift */; };
 		12EE04BFA1C31D2F8E06B468 /* ShareMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */; };
 		28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E5E79DF0834291ADEBBD7C /* Assets.xcassets */; };
+		D40D5F0131954748A187AB49 /* LocalHTMLPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */; };
 		2AF32D4A993C6D789D7E0748 /* Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA2A278847D4E2C6FC7986 /* Base64URL.swift */; };
 		35B3AD97FDA5AF424BA85EDD /* PocketPortProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190FCA0073315605D0EB6B32 /* PocketPortProtocol.framework */; };
 		3C5FFFDA5DA133143570B2B7 /* PocketPortUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A24D715C87FB7948B53CE /* PocketPortUITests.swift */; };
@@ -91,6 +92,7 @@
 		634A24D715C87FB7948B53CE /* PocketPortUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketPortUITests.swift; sourceTree = "<group>"; };
 		6ED3CE0528B35215AC8C844D /* MarkdownReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownReaderTests.swift; sourceTree = "<group>"; };
 		70AD670B5BA860D95E8092B2 /* MarkdownBlockMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownBlockMapper.swift; sourceTree = "<group>"; };
+		7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHTMLPreview.swift; sourceTree = "<group>"; };
 		80B85D22E6AB44003DD1267A /* CameraScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScanner.swift; sourceTree = "<group>"; };
 		83A288C3FDBF0F5FB62CD43D /* TransferClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferClientTests.swift; sourceTree = "<group>"; };
 		8C97B3E5B604D0BD858E0528 /* ScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerSheet.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				70AD670B5BA860D95E8092B2 /* MarkdownBlockMapper.swift */,
 				01F702E832900A5F964B3878 /* ReaderView.swift */,
+				7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				68D08FEE23174419AD173871 /* WiFiAvailability.swift in Sources */,
 				EBBC4C2585BB59357C7094ED /* MarkdownBlockMapper.swift in Sources */,
 				FD8B7A12C61FF48A40C0A924 /* ReaderView.swift in Sources */,
+				D40D5F0131954748A187AB49 /* LocalHTMLPreview.swift in Sources */,
 				5C410ABF736598BDAD349F04 /* ScannerSheet.swift in Sources */,
 				5359A7B758F7B5B03FADF0D7 /* PocketPortApp.swift in Sources */,
 				A9400C6406FB0C56A82AF080 /* TransferClient.swift in Sources */,

@@ -69,7 +69,12 @@ struct Session {
             return Reply(status: 204)
         }
         var headers = snapshot.metadata.headers
-        headers["Content-Type"] = snapshot.metadata.format?.contentType(filename: snapshot.metadata.filename) ?? "application/octet-stream"
+        let format = snapshot.metadata.format
+        headers["Content-Type"] = format?.contentType(filename: snapshot.metadata.filename) ?? "application/octet-stream"
+        if format == .html {
+            headers["Content-Disposition"] = "attachment"
+            headers["X-Content-Type-Options"] = "nosniff"
+        }
         return Reply(status: 200, headers: headers, bytes: snapshot.bytes)
     }
 }

@@ -9,19 +9,17 @@ struct ReaderView: View {
     @State private var state = StateOfDocument.loading
 
     private enum StateOfDocument {
-        case loading, failed, loaded([MarkdownBlock]), preview(URL)
+        case loading, failed, loaded([MarkdownBlock]), preview(URL), html(Data)
     }
 
     var body: some View {
         Group {
-            if case .preview(let url) = state {
-                VStack(alignment: .leading, spacing: 0) {
-                    if showSaved {
-                        savedBadge.padding(.horizontal, 20).padding(.vertical, 12)
-                    }
-                    LocalFilePreview(url: url, filename: filename)
-                }
-            } else {
+            switch state {
+            case .preview(let url):
+                savedPreview(LocalFilePreview(url: url, filename: filename))
+            case .html(let data):
+                savedPreview(LocalHTMLPreview(data: data))
+            default:
                 document
             }
         }
@@ -33,20 +31,36 @@ struct ReaderView: View {
             do {
                 let item = try await store.preview(id: importID)
                 filename = item.record.filename
-                if item.record.format == .markdown {
+                switch item.record.format {
+                case .markdown:
                     let blocks = try await Task.detached(priority: .userInitiated) {
                         let data = try Data(contentsOf: item.url, options: [.mappedIfSafe])
                         return try MarkdownBlockMapper.blocks(from: String(decoding: data, as: UTF8.self))
                     }.value
                     try Task.checkCancellation()
                     state = .loaded(blocks)
-                } else {
+                case .html:
+                    let data = try await Task.detached(priority: .userInitiated) {
+                        try Data(contentsOf: item.url, options: [.mappedIfSafe])
+                    }.value
+                    try Task.checkCancellation()
+                    state = .html(data)
+                default:
                     try Task.checkCancellation()
                     state = .preview(item.url)
                 }
             } catch {
                 if !Task.isCancelled { state = .failed }
             }
+        }
+    }
+
+    private func savedPreview<Content: View>(_ content: Content) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if showSaved {
+                savedBadge.padding(.horizontal, 20).padding(.vertical, 12)
+            }
+            content
         }
     }
 
@@ -64,7 +78,7 @@ struct ReaderView: View {
                     if showSaved { savedBadge }
                     if blocks.isEmpty { Text("Empty document").foregroundStyle(.secondary) }
                     ForEach(blocks) { BlockView(block: $0) }
-                case .preview:
+                case .preview, .html:
                     EmptyView()
                 }
             }

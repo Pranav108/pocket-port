@@ -117,7 +117,32 @@ final class PocketPortCLITests: XCTestCase {
     func testUnsupportedFileErrorListsOnlySupportedExtensions() throws {
         XCTAssertThrowsError(try FileSnapshot.load(path: "example.zip", projectLabel: nil)) { error in
             XCTAssertEqual(error.localizedDescription,
-                           "Unsupported file type. Supported extensions: .bmp, .gif, .heic, .heif, .jpeg, .jpg, .markdown, .md, .pdf, .png, .tif, .tiff, .txt, .webp.")
+                           "Unsupported file type. Supported extensions: .bmp, .gif, .heic, .heif, .htm, .html, .jpeg, .jpg, .markdown, .md, .pdf, .png, .tif, .tiff, .txt, .webp.")
+        }
+    }
+
+    func testHTMLSnapshotIsSharedAsAnAttachment() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let bytes = Data("<!doctype html><h1>Quarterly review ✓</h1>".utf8)
+        let now = DispatchTime.now()
+        let link = try ShareLink(host: "host.local", port: 1234, shareID: UUID(),
+                                 token: ShareLink.generateToken(), expiresAtUnixSeconds: 100)
+        for filename in ["Report.HTML", "Report.htm"] {
+            let file = folder.appendingPathComponent(filename)
+            try bytes.write(to: file)
+            let snapshot = try FileSnapshot.loadOnlyShareableFile(in: folder, projectLabel: nil)
+            XCTAssertEqual(snapshot.metadata.filename, filename)
+            XCTAssertEqual(snapshot.metadata.format, .html)
+            var session = Session(link: link, snapshot: snapshot, deadline: now + 5)
+            let response = session.respond(Request(method: "GET", path: link.downloadURL.path,
+                                                   authorization: link.authorizationHeader), now: now)
+            XCTAssertEqual(response.bytes, bytes)
+            XCTAssertEqual(response.headers["Content-Type"], "application/octet-stream")
+            XCTAssertEqual(response.headers["Content-Disposition"], "attachment")
+            XCTAssertEqual(response.headers["X-Content-Type-Options"], "nosniff")
+            try FileManager.default.removeItem(at: file)
         }
     }
     func testSourceValidationAndSymlinkName() throws {

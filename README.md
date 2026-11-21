@@ -1,6 +1,6 @@
 # PocketPort
 
-Share Markdown, plain text, PDFs, and images from your Mac to your iPhone over trusted Wi-Fi. The helper opens a temporary HTTP share, and the iPhone keeps a byte-for-byte copy for offline viewing.
+Share Markdown, plain text, HTML, PDFs, and images from your Mac to your iPhone over trusted Wi-Fi. The helper opens a temporary HTTP share, and the iPhone keeps a byte-for-byte copy for offline viewing.
 
 ## Install the Mac helper
 
@@ -54,11 +54,14 @@ Run `pocket-port` without arguments to share the only eligible file in the curre
 ```sh
 pocket-port PLAN.md
 pocket-port report.pdf
+pocket-port report.html
 pocket-port "designs/App Icon.png"
 pocket-port --project "Release planning" "/path/to/another/PLAN.md"
 ```
 
-Supported extensions are `.md`, `.markdown`, `.txt`, `.pdf`, `.bmp`, `.gif`, `.heic`, `.heif`, `.jpeg`, `.jpg`, `.png`, `.tif`, `.tiff`, and `.webp`. A file named `README` also works. Markdown and text files must be UTF-8 and can be up to 5 MiB. PDFs and images can be up to 25 MiB. PocketPort also accepts QR codes from earlier versions of the Mac helper.
+Supported extensions are `.md`, `.markdown`, `.txt`, `.htm`, `.html`, `.pdf`, `.bmp`, `.gif`, `.heic`, `.heif`, `.jpeg`, `.jpg`, `.png`, `.tif`, `.tiff`, and `.webp`. A file named `README` also works. Markdown, text, and HTML files must be UTF-8 and can be up to 5 MiB. PDFs and images can be up to 25 MiB. PocketPort also accepts QR codes from earlier versions of the Mac helper.
+
+HTML files open as offline previews. Use a self-contained page with HTML and embedded styles. JavaScript, automatic network requests, and external navigation are disabled.
 
 ## Install the iPhone app
 

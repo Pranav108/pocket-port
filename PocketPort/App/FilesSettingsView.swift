@@ -80,7 +80,7 @@ private struct HowItWorksView: View {
                 Text("Allow Camera and Local Network access when prompted. Keep Terminal open until the app says Saved offline. An unused code expires after three minutes.")
             }
             Section("After importing") {
-                Text("Open saved Markdown, plain text, PDFs, and images from Files, even offline. Swipe a row to share or delete the downloaded copy.")
+                Text("Open saved Markdown, plain text, HTML, PDFs, and images from Files, even offline. Swipe a row to share or delete the downloaded copy.")
             }
             Section("Mac helper source") {
                 Link(destination: Self.repository) {
