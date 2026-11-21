@@ -3,22 +3,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "ShareMD",
+    name: "PocketPort",
     platforms: [
         .iOS(.v17),
         .macOS(.v14),
     ],
     products: [
-        .executable(name: "share-md", targets: ["ShareMDCLI"]),
-        .library(name: "ShareProtocol", targets: ["ShareProtocol"]),
+        .executable(name: "pocket-port", targets: ["PocketPortCLI"]),
+        .library(name: "PocketPortProtocol", targets: ["PocketPortProtocol"]),
     ],
     targets: [
-        .target(name: "ShareProtocol"),
-        .executableTarget(name: "ShareMDCLI", dependencies: ["ShareProtocol"]),
-        .testTarget(name: "ShareMDCLITests", dependencies: ["ShareMDCLI"]),
+        .target(name: "PocketPortProtocol"),
+        .executableTarget(name: "PocketPortCLI", dependencies: ["PocketPortProtocol"]),
+        .testTarget(name: "PocketPortCLITests", dependencies: ["PocketPortCLI"]),
         .testTarget(
-            name: "ShareProtocolTests",
-            dependencies: ["ShareProtocol"],
+            name: "PocketPortProtocolTests",
+            dependencies: ["PocketPortProtocol"],
             resources: [.process("Fixtures")]
         ),
     ]

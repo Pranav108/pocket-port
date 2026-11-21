@@ -1,9 +1,28 @@
 import Darwin
 import XCTest
-import ShareProtocol
-@testable import ShareMDCLI
+import PocketPortProtocol
+@testable import PocketPortCLI
 
-final class ShareMDCLITests: XCTestCase {
+final class PocketPortCLITests: XCTestCase {
+    func testBinarySnapshotPreservesBytesAndUsesMatchingContentType() throws {
+        let id = UUID()
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(id.uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let now = DispatchTime.now()
+        let link = try ShareLink(host: "host.local", port: 1234, shareID: id,
+                                 token: ShareLink.generateToken(), expiresAtUnixSeconds: 100)
+        let bytes = Data([0x89, 0x50, 0x4e, 0x47, 0xff])
+        let file = directory.appendingPathComponent("Example.PNG")
+        try bytes.write(to: file)
+        let snapshot = try FileSnapshot.load(path: file.path, projectLabel: nil)
+        var share = Session(link: link, snapshot: snapshot, deadline: now + 5)
+        let reply = share.respond(Request(method: "GET", path: link.downloadURL.path,
+                                          authorization: link.authorizationHeader), now: now)
+        XCTAssertEqual(reply.headers["Content-Type"], "image/png")
+        XCTAssertEqual(reply.bytes, bytes)
+    }
+
     func testSnapshotAndSession() throws {
         let base = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: base) }
@@ -67,23 +86,39 @@ final class ShareMDCLITests: XCTestCase {
             }
         }
     }
-    func testReadmePickerFindsNestedReadmesWithRelativeNames() throws {
-        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+    func testAutomaticSelectionRequiresExactlyOneShareableFileInCurrentFolder() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
         defer { try? FileManager.default.removeItem(at: root) }
-        let expected = ["README", ".github/README.md", "Project with spaces/Docs/Readme.fr.MARKDOWN"]
-        for path in expected + ["PLAN.md", "Project with spaces/README.txt", ".git/README.md"] {
-            let url = root.appendingPathComponent(path)
-            try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-            try Data("# Example\n".utf8).write(to: url)
-        }
-        try FileManager.default.createDirectory(at: root.appendingPathComponent("README.md"), withIntermediateDirectories: true)
-        try FileManager.default.createSymbolicLink(at: root.appendingPathComponent("Loop"), withDestinationURL: root)
+        let nested = root.appendingPathComponent("Nested", isDirectory: true)
+        try FileManager.default.createDirectory(at: nested, withIntermediateDirectories: true)
+        try Data("Notes".utf8).write(to: nested.appendingPathComponent("notes.txt"))
+        try Data().write(to: root.appendingPathComponent("archive.zip"))
+        try Data([0xff]).write(to: root.appendingPathComponent("invalid.txt"))
+        try FileManager.default.createDirectory(at: root.appendingPathComponent("folder.pdf"),
+                                                withIntermediateDirectories: false)
 
-        let found = try ReadmePicker.candidates(in: root)
-        XCTAssertEqual(found.map(\.path), expected.map { root.appendingPathComponent($0).path })
-        let snapshot = try FileSnapshot.load(path: try XCTUnwrap(found.first).path, projectLabel: nil)
-        XCTAssertEqual(snapshot.metadata.filename, "README")
-        XCTAssertEqual(snapshot.bytes, Data("# Example\n".utf8))
+        XCTAssertThrowsError(try FileSnapshot.loadOnlyShareableFile(in: root, projectLabel: nil)) { error in
+            XCTAssertTrue(error.localizedDescription.hasPrefix("No shareable files in this folder."))
+        }
+
+        let image = Data([0x89, 0x50, 0x4e, 0x47])
+        try image.write(to: root.appendingPathComponent("Photo.PNG"))
+        let snapshot = try FileSnapshot.loadOnlyShareableFile(in: root, projectLabel: "Trip")
+        XCTAssertEqual(snapshot.metadata.filename, "Photo.PNG")
+        XCTAssertEqual(snapshot.metadata.project, "Trip")
+        XCTAssertEqual(snapshot.bytes, image)
+
+        try Data("# Plan".utf8).write(to: root.appendingPathComponent("plan.md"))
+        XCTAssertThrowsError(try FileSnapshot.loadOnlyShareableFile(in: root, projectLabel: nil)) { error in
+            XCTAssertEqual(error.localizedDescription, "Multiple shareable files in this folder. Run pocket-port <filename>.")
+        }
+    }
+
+    func testUnsupportedFileErrorListsOnlySupportedExtensions() throws {
+        XCTAssertThrowsError(try FileSnapshot.load(path: "example.zip", projectLabel: nil)) { error in
+            XCTAssertEqual(error.localizedDescription,
+                           "Unsupported file type. Supported extensions: .bmp, .gif, .heic, .heif, .jpeg, .jpg, .markdown, .md, .pdf, .png, .tif, .tiff, .txt, .webp.")
+        }
     }
     func testSourceValidationAndSymlinkName() throws {
         let dir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -120,7 +155,7 @@ final class ShareMDCLITests: XCTestCase {
         }
         let ownPID = "pid \(ProcessInfo.processInfo.processIdentifier)("
         func hasAssertion() throws -> Bool {
-            try assertions().components(separatedBy: "\n").contains { $0.contains(ownPID) && $0.contains("Share.md active file transfer") }
+            try assertions().components(separatedBy: "\n").contains { $0.contains(ownPID) && $0.contains("PocketPort active file transfer") }
         }
         var assertion: PowerAssertion? = try PowerAssertion()
         try withExtendedLifetime(assertion) { XCTAssertTrue(try hasAssertion()) }

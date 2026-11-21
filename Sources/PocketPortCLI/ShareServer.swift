@@ -1,10 +1,10 @@
 import Foundation
 import Network
-import ShareProtocol
+import PocketPortProtocol
 
 // All listener, child, timer and session callbacks execute on this queue.
 final class ShareServer {
-    let queue = DispatchQueue(label: "ShareMD.listener")
+    let queue = DispatchQueue(label: "PocketPort.listener")
     private let listener: NWListener
     private var session: Session?
     private var initialSnapshot: FileSnapshot?
@@ -121,7 +121,7 @@ final class ShareServer {
             guard error == nil else { close(id); return }
             if final { drain(child); return }
             #if DEBUG
-            if ProcessInfo.processInfo.environment["SHARE_MD_SLOW_TRANSFER"] == "1" {
+            if ProcessInfo.processInfo.environment["POCKETPORT_SLOW_TRANSFER"] == "1" {
                 queue.asyncAfter(deadline: .now() + .milliseconds(150)) { [weak self, weak child] in
                     if let child { self?.sendBody(bytes, offset: end, to: child) }
                 }

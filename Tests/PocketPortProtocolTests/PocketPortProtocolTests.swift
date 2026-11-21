@@ -1,8 +1,8 @@
 import Foundation
-import ShareProtocol
+import PocketPortProtocol
 import XCTest
 
-final class ShareProtocolTests: XCTestCase {
+final class PocketPortProtocolTests: XCTestCase {
     private struct WireExample: Decodable {
         let qrString: String
         let downloadURL: String

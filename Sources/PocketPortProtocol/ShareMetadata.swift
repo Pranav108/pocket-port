@@ -1,6 +1,61 @@
 import CryptoKit
 import Foundation
 
+public enum ShareFileFormat: String, CaseIterable, Sendable {
+    case markdown = "Markdown"
+    case text = "Text"
+    case pdf = "PDF"
+    case image = "Image"
+
+    private static let documentTypes: [String: Self] = [
+        "md": .markdown, "markdown": .markdown, "txt": .text, "pdf": .pdf
+    ]
+
+    private static let imageTypes = [
+        "jpg": "image/jpeg", "jpeg": "image/jpeg", "png": "image/png",
+        "gif": "image/gif", "heic": "image/heic", "heif": "image/heif",
+        "webp": "image/webp", "tiff": "image/tiff", "tif": "image/tiff", "bmp": "image/bmp"
+    ]
+
+    public static let supportedExtensions = (Array(documentTypes.keys) + imageTypes.keys).sorted()
+
+    public init?(filename: String) {
+        let ext = Self.fileExtension(filename)
+        if filename.lowercased() == "readme" {
+            self = .markdown
+        } else if let documentType = Self.documentTypes[ext] {
+            self = documentType
+        } else if Self.imageTypes[ext] != nil {
+            self = .image
+        } else {
+            return nil
+        }
+    }
+
+    public var requiresUTF8: Bool { self == .markdown || self == .text }
+
+    public var maximumByteCount: Int {
+        requiresUTF8 ? ShareMetadata.maximumFileBytes : 25 * 1024 * 1024
+    }
+
+    public func contentType(filename: String) -> String {
+        switch self {
+        case .markdown: return ShareMetadata.contentType
+        case .text: return "text/plain; charset=utf-8"
+        case .pdf: return "application/pdf"
+        case .image: return Self.imageTypes[Self.fileExtension(filename)] ?? "application/octet-stream"
+        }
+    }
+
+    public func storedFilename(original filename: String) -> String {
+        "document." + (self == .markdown ? "md" : Self.fileExtension(filename))
+    }
+
+    private static func fileExtension(_ filename: String) -> String {
+        (filename as NSString).pathExtension.lowercased()
+    }
+}
+
 public struct ShareMetadata: Equatable, Sendable {
     public enum ValidationError: Error, Equatable {
         case invalidFilename
@@ -20,6 +75,7 @@ public struct ShareMetadata: Equatable, Sendable {
     public let filename: String
     public let project: String?
     public let sha256: String
+    public var format: ShareFileFormat? { ShareFileFormat(filename: filename) }
 
     public init(filename: String, project: String? = nil, sha256: String) throws {
         guard !filename.isEmpty,

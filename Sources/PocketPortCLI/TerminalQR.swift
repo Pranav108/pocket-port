@@ -46,7 +46,7 @@ enum TerminalQR {
     static func columns() throws -> Int {
         var size = winsize()
         guard isatty(STDOUT_FILENO) != 0, ioctl(STDOUT_FILENO, TIOCGWINSZ, &size) == 0, size.ws_col > 0 else {
-            throw CLIError("Run share-md in an interactive terminal to display the QR code.")
+            throw CLIError("Run pocket-port in an interactive terminal to display the QR code.")
         }
         return Int(size.ws_col)
     }

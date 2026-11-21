@@ -1,5 +1,5 @@
 import Foundation
-import ShareProtocol
+import PocketPortProtocol
 
 struct Request {
     let method: String
@@ -69,7 +69,7 @@ struct Session {
             return Reply(status: 204)
         }
         var headers = snapshot.metadata.headers
-        headers["Content-Type"] = ShareMetadata.contentType
+        headers["Content-Type"] = snapshot.metadata.format?.contentType(filename: snapshot.metadata.filename) ?? "application/octet-stream"
         return Reply(status: 200, headers: headers, bytes: snapshot.bytes)
     }
 }
