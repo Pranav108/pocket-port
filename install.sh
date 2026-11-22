@@ -73,6 +73,18 @@ main() (
     mv -f "$staged" "$bin_dir/pocket-port"
     printf 'Installed %s\n' "$bin_dir/pocket-port"
 
+    local shortcut
+    for shortcut in pocketport pp; do
+        if [[ -e "$bin_dir/$shortcut" || -L "$bin_dir/$shortcut" ]] || command -v "$shortcut" >/dev/null 2>&1; then
+            continue
+        fi
+        if ln -s pocket-port "$bin_dir/$shortcut"; then
+            printf 'Installed shortcut %s\n' "$bin_dir/$shortcut"
+        else
+            printf 'Use pocket-port. Could not install shortcut %s.\n' "$shortcut" >&2
+        fi
+    done
+
     case ":$PATH:" in
         *":$bin_dir:"*) printf 'Run pocket-port --help to verify the installation.\n' ;;
         *)

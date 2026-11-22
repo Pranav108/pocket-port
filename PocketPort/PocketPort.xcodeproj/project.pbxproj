@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA77C46E242A43C2A0894792 /* Mbed TLS license in Resources */ = {isa = PBXBuildFile; fileRef = AA77C46E242A43C2A0894791 /* Mbed TLS license */; };
+		2447338FE13A97D33FBA88C0 /* PocketPortPairing.c in Sources */ = {isa = PBXBuildFile; fileRef = 39571D377FC03D340AE0FBA8 /* PocketPortPairing.c */; };
+		9ECA1FC32EE2AFECF132CFE7 /* bignum.c in Sources */ = {isa = PBXBuildFile; fileRef = F255771C2CF64333BB59EE4D /* bignum.c */; };
+		863F56F76EF5F844E65CFE02 /* bignum_core.c in Sources */ = {isa = PBXBuildFile; fileRef = DF8AEC50CE85CFBE828AFCE3 /* bignum_core.c */; };
+		4EA4ACAD4F915EA3763F047C /* constant_time.c in Sources */ = {isa = PBXBuildFile; fileRef = 17F0C2E9EDB9CF53DCA7B1A3 /* constant_time.c */; };
+		31D48A9BC2FD2B310FE569BF /* ecjpake.c in Sources */ = {isa = PBXBuildFile; fileRef = 8DD45963646340D454E0178B /* ecjpake.c */; };
+		9EA50ABF8D01E2E26DE45960 /* ecp.c in Sources */ = {isa = PBXBuildFile; fileRef = 62BD6E5482D1C0624B5CC4F7 /* ecp.c */; };
+		0CBE5FC222CD995980DE3134 /* ecp_curves.c in Sources */ = {isa = PBXBuildFile; fileRef = EBEE92EFB590B0D09F7F25C5 /* ecp_curves.c */; };
+		D921CABAF8A03BD8B8382641 /* ecp_curves_new.c in Sources */ = {isa = PBXBuildFile; fileRef = 005D1EDAB7FF72C3AAB9B33E /* ecp_curves_new.c */; };
+		A95D23465D59D85749B33F91 /* md.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D8DB3630B3564A4AFFD29 /* md.c */; };
+		4524368313DE8949817CD430 /* platform_util.c in Sources */ = {isa = PBXBuildFile; fileRef = 13FA0FB596EED96A68709252 /* platform_util.c */; };
+		1D59BE1A4E4FF6C7B5B36E76 /* sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = B0A51D4A5FE11E238B382342 /* sha256.c */; };
+		7A74ABCA41ABF01522099E21 /* PairedComputersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287741F9EA1525A91DDE9B5B /* PairedComputersView.swift */; };
+		A21FF4DE59B95C179724642E /* DirectReceivingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9709C0CA8826AB128D35A8 /* DirectReceivingModel.swift */; };
+		7B30B23C813177EC2A3735A4 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BF9049E8F2F64787720000 /* DirectTransfer.swift */; };
+		B2C69B6A22FBA48D369A9666 /* DirectNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13BC34A2D2424AD825CAF3 /* DirectNetwork.swift */; };
+		793E710A1AF83CC13101D4C6 /* DevicePairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77BCFF27569299B30543FAA /* DevicePairing.swift */; };
+		208C7CF8CD451FB7BD4DB291 /* DeviceTrust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA58856E6BE4F574A2CAF3D /* DeviceTrust.swift */; };
 		01CE07FDCB0181D2C8B1769C /* CameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B85D22E6AB44003DD1267A /* CameraScanner.swift */; };
 		01D72E298E77854DACE1793F /* ImportStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13680FB2105A63C29357B3CD /* ImportStore.swift */; };
 		12EE04BFA1C31D2F8E06B468 /* ShareMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */; };
@@ -85,6 +103,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA77C46E242A43C2A0894791 /* Mbed TLS license */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Mbed TLS license"; path = "../Sources/CPocketPortPairing/vendor/LICENSE"; sourceTree = SOURCE_ROOT; };
+		39571D377FC03D340AE0FBA8 /* PocketPortPairing.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "PocketPortPairing.c"; sourceTree = "<group>"; };
+		F255771C2CF64333BB59EE4D /* bignum.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/bignum.c"; sourceTree = "<group>"; };
+		DF8AEC50CE85CFBE828AFCE3 /* bignum_core.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/bignum_core.c"; sourceTree = "<group>"; };
+		17F0C2E9EDB9CF53DCA7B1A3 /* constant_time.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/constant_time.c"; sourceTree = "<group>"; };
+		8DD45963646340D454E0178B /* ecjpake.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/ecjpake.c"; sourceTree = "<group>"; };
+		62BD6E5482D1C0624B5CC4F7 /* ecp.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/ecp.c"; sourceTree = "<group>"; };
+		EBEE92EFB590B0D09F7F25C5 /* ecp_curves.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/ecp_curves.c"; sourceTree = "<group>"; };
+		005D1EDAB7FF72C3AAB9B33E /* ecp_curves_new.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/ecp_curves_new.c"; sourceTree = "<group>"; };
+		3F6D8DB3630B3564A4AFFD29 /* md.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/md.c"; sourceTree = "<group>"; };
+		13FA0FB596EED96A68709252 /* platform_util.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/platform_util.c"; sourceTree = "<group>"; };
+		B0A51D4A5FE11E238B382342 /* sha256.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "vendor/library/sha256.c"; sourceTree = "<group>"; };
+		287741F9EA1525A91DDE9B5B /* PairedComputersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Direct/PairedComputersView.swift"; sourceTree = "<group>"; };
+		8A9709C0CA8826AB128D35A8 /* DirectReceivingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Direct/DirectReceivingModel.swift"; sourceTree = "<group>"; };
+		59BF9049E8F2F64787720000 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectTransfer.swift"; sourceTree = "<group>"; };
+		CA13BC34A2D2424AD825CAF3 /* DirectNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectNetwork.swift"; sourceTree = "<group>"; };
+		E77BCFF27569299B30543FAA /* DevicePairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DevicePairing.swift"; sourceTree = "<group>"; };
+		4BA58856E6BE4F574A2CAF3D /* DeviceTrust.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceTrust.swift"; sourceTree = "<group>"; };
 		01F702E832900A5F964B3878 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
 		13680FB2105A63C29357B3CD /* ImportStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportStore.swift; sourceTree = "<group>"; };
 		190FCA0073315605D0EB6B32 /* PocketPortProtocol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PocketPortProtocol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +174,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B619CDBE8547C2B3B0CEDED5 /* CPocketPortPairing */ = {
+			isa = PBXGroup;
+			children = (
+				39571D377FC03D340AE0FBA8 /* PocketPortPairing.c */,
+				F255771C2CF64333BB59EE4D /* bignum.c */,
+				DF8AEC50CE85CFBE828AFCE3 /* bignum_core.c */,
+				17F0C2E9EDB9CF53DCA7B1A3 /* constant_time.c */,
+				8DD45963646340D454E0178B /* ecjpake.c */,
+				62BD6E5482D1C0624B5CC4F7 /* ecp.c */,
+				EBEE92EFB590B0D09F7F25C5 /* ecp_curves.c */,
+				005D1EDAB7FF72C3AAB9B33E /* ecp_curves_new.c */,
+				3F6D8DB3630B3564A4AFFD29 /* md.c */,
+				13FA0FB596EED96A68709252 /* platform_util.c */,
+				B0A51D4A5FE11E238B382342 /* sha256.c */,
+			);
+			name = CPocketPortPairing;
+			path = ../Sources/CPocketPortPairing;
+			sourceTree = "<group>";
+		};
 		2BAF453546AC025EFFDFB3B2 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +207,10 @@
 			isa = PBXGroup;
 			children = (
 				BEFA2A278847D4E2C6FC7986 /* Base64URL.swift */,
+				59BF9049E8F2F64787720000 /* DirectTransfer.swift */,
+				CA13BC34A2D2424AD825CAF3 /* DirectNetwork.swift */,
+				E77BCFF27569299B30543FAA /* DevicePairing.swift */,
+				4BA58856E6BE4F574A2CAF3D /* DeviceTrust.swift */,
 				9A7D322A277BDAAB9235B526 /* ShareLink.swift */,
 				AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */,
 			);
@@ -185,6 +244,7 @@
 				FDDDBF5AA66C8640D961DD38 /* App */,
 				9D02F67C0602F106FDE71707 /* plans */,
 				308BD84CDBD4A5C3263DEEF3 /* PocketPortProtocol */,
+				B619CDBE8547C2B3B0CEDED5 /* CPocketPortPairing */,
 				F85BC3A9AAB22C82454910E8 /* Tests */,
 				924FA452F9CAD3069BD819D6 /* UITests */,
 				6BF498324BDF71DDE7ADFE41 /* Products */,
@@ -252,11 +312,14 @@
 			isa = PBXGroup;
 			children = (
 				F6733215EF67639BC75FC5EB /* ImportedFilesView.swift */,
+				287741F9EA1525A91DDE9B5B /* PairedComputersView.swift */,
+				8A9709C0CA8826AB128D35A8 /* DirectReceivingModel.swift */,
 				82FB75CCA028416389A94350 /* PocketPortTheme.swift */,
 				82FB75CCA028416389A94351 /* FilesSettingsView.swift */,
 				28DB614B881176BE95A139CD /* PocketPortApp.swift */,
 				90E5E79DF0834291ADEBBD7C /* Assets.xcassets */,
 				6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */,
+				AA77C46E242A43C2A0894791 /* Mbed TLS license */,
 				9B67137D3E960D964FD740CB /* Import */,
 				B8C782E29C46C2FEF4B3C6ED /* Reader */,
 				2BAF453546AC025EFFDFB3B2 /* Scanner */,
@@ -383,6 +446,7 @@
 		};
 /* End PBXProject section */
 
+
 /* Begin PBXResourcesBuildPhase section */
 		240A07455AF7B8A885D4EBED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -400,6 +464,7 @@
 			files = (
 				28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */,
 				ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */,
+				AA77C46E242A43C2A0894792 /* Mbed TLS license in Resources */,
 				4B67C8D45F08405C989C5E54 /* Mermaid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,7 +476,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2447338FE13A97D33FBA88C0 /* PocketPortPairing.c in Sources */,
+				9ECA1FC32EE2AFECF132CFE7 /* bignum.c in Sources */,
+				863F56F76EF5F844E65CFE02 /* bignum_core.c in Sources */,
+				4EA4ACAD4F915EA3763F047C /* constant_time.c in Sources */,
+				31D48A9BC2FD2B310FE569BF /* ecjpake.c in Sources */,
+				9EA50ABF8D01E2E26DE45960 /* ecp.c in Sources */,
+				0CBE5FC222CD995980DE3134 /* ecp_curves.c in Sources */,
+				D921CABAF8A03BD8B8382641 /* ecp_curves_new.c in Sources */,
+				A95D23465D59D85749B33F91 /* md.c in Sources */,
+				4524368313DE8949817CD430 /* platform_util.c in Sources */,
+				1D59BE1A4E4FF6C7B5B36E76 /* sha256.c in Sources */,
 				2AF32D4A993C6D789D7E0748 /* Base64URL.swift in Sources */,
+				7B30B23C813177EC2A3735A4 /* DirectTransfer.swift in Sources */,
+				B2C69B6A22FBA48D369A9666 /* DirectNetwork.swift in Sources */,
+				793E710A1AF83CC13101D4C6 /* DevicePairing.swift in Sources */,
+				208C7CF8CD451FB7BD4DB291 /* DeviceTrust.swift in Sources */,
 				A2C05BC0C3994C4C41647E3B /* ShareLink.swift in Sources */,
 				12EE04BFA1C31D2F8E06B468 /* ShareMetadata.swift in Sources */,
 			);
@@ -425,6 +505,8 @@
 				FC7C1A58B8C14AD012835020 /* ImportCoordinator.swift in Sources */,
 				01D72E298E77854DACE1793F /* ImportStore.swift in Sources */,
 				7424CFC9820E44A6147B0819 /* ImportedFilesView.swift in Sources */,
+				7A74ABCA41ABF01522099E21 /* PairedComputersView.swift in Sources */,
+				A21FF4DE59B95C179724642E /* DirectReceivingModel.swift in Sources */,
 				68D08FEE23174419AD173869 /* PocketPortTheme.swift in Sources */,
 				68D08FEE23174419AD173870 /* FilesSettingsView.swift in Sources */,
 				68D08FEE23174419AD173871 /* WiFiAvailability.swift in Sources */,
@@ -563,6 +645,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../Sources/CPocketPortPairing/include", "$(SRCROOT)/../Sources/CPocketPortPairing/vendor/include");
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/../Sources/CPocketPortPairing/include";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.pocketport.protocol;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -603,6 +687,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = ("$(SRCROOT)/../Sources/CPocketPortPairing/include", "$(SRCROOT)/../Sources/CPocketPortPairing/vendor/include");
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/../Sources/CPocketPortPairing/include";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.pocketport.protocol;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

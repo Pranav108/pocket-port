@@ -5,6 +5,8 @@ import UIKit
 struct ImportedFilesView: View {
     @ObservedObject var coordinator: ImportCoordinator
     @ObservedObject var wifi: WiFiAvailability
+    @ObservedObject var direct: DirectReceivingModel
+    @Environment(\.scenePhase) private var scenePhase
     let fixturesEnabled: Bool
     @AppStorage("confirmBeforeDeleting") private var confirmBeforeDeleting = true
     @State private var files: [ImportRecord] = []
@@ -40,6 +42,7 @@ struct ImportedFilesView: View {
                     FilesSettingsView(confirmBeforeDeleting: $confirmBeforeDeleting,
                                       byteCount: files.reduce(0) { $0 + Int64($1.byteCount) },
                                       isEmpty: files.isEmpty,
+                                      direct: direct,
                                       clearFiles: clearFiles)
                 }
                 .sheet(isPresented: $showingFilters) {
@@ -66,7 +69,17 @@ struct ImportedFilesView: View {
                     if case .committed = phase { scanning = false }
                     else { closeIdleScannerIfOffline() }
                 }
+                .safeAreaInset(edge: .bottom, spacing: 0) {
+                    if let activity = direct.activity {
+                        DirectTransferNotice(activity: activity, dismiss: direct.dismissActivity)
+                    }
+                }
+                .onChange(of: direct.importEvent) { _, _ in Task { await refresh() } }
+                .onChange(of: scenePhase, initial: true) { _, phase in
+                    direct.updateAvailability(foreground: phase == .active, wifi: wifi.isAvailable)
+                }
                 .onChange(of: wifi.isAvailable) { _, available in
+                    direct.updateAvailability(foreground: scenePhase == .active, wifi: available)
                     if available == true { showingWiFiRequired = false }
                     closeIdleScannerIfOffline()
                 }

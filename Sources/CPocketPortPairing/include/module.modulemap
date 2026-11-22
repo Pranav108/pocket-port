@@ -1,0 +1,4 @@
+module CPocketPortPairing {
+    header "PocketPortPairing.h"
+    export *
+}

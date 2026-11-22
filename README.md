@@ -63,6 +63,33 @@ Supported extensions are `.md`, `.markdown`, `.txt`, `.htm`, `.html`, `.pdf`, `.
 
 HTML files open as offline previews. Use a self-contained page with HTML and embedded styles. JavaScript, automatic network requests, and external navigation are disabled.
 
+## Share directly with a paired device
+
+Keep PocketPort open on the receiving iPhone or iPad. Both devices need a trusted Wi-Fi network that permits local peer connections and Bonjour.
+
+1. Run `pocket-port pair` on your Mac. In PocketPort, open **Settings → Paired Computers → Add Computer**.
+2. Select the Mac, enter the six-digit code from Terminal, and compare the Mac fingerprint shown on both screens. Tap **Trust Computer**.
+3. Send a file after Terminal confirms pairing.
+
+```sh
+pocket-port devices
+pocket-port send "docs/Release Notes.md" --to iphone
+pocket-port default iphone
+pocket-port send README.md
+pocket-port send -t iphone,ipad README.md
+pocket-port send README.md -t all
+```
+
+If you omit the file, `send` uses the only eligible file in the current folder. If you omit the target, PocketPort uses the default or the only paired device. When several devices are paired without a default, Terminal prompts you to select one. A noninteractive session needs an explicit target or a default.
+
+Use `pocket-port rename iphone personal-phone` to change an alias, `pocket-port default --clear` to clear the default, and `pocket-port unpair personal-phone` to remove trust locally. On the iPhone, tap a computer in **Paired Computers** to rename its alias or remove it. Removing a device on either side prevents future transfers until you pair it again.
+
+The one-line installer adds `pocketport` and `pp` shortcuts when those names are available. After a package or manual install, you can add `alias pp=pocket-port` to your shell profile if the name is free. Existing QR sharing still starts with `pocket-port <file>`.
+
+If a transfer is interrupted or Terminal can’t confirm the receipt, run the same command again with the same file and target. PocketPort retains the transfer ID for 24 hours so an already saved copy can be acknowledged without importing it twice. For multiple targets, Terminal prints a result for each device and exits with an error if any transfer is unconfirmed.
+
+The app receives files while active in the foreground. Guest Wi-Fi can block local communication even when both devices use the same network. See the [pairing and direct transfer protocol](docs/direct-transfer-protocol.md).
+
 ## Install the iPhone app
 
 PocketPort is currently available as source. A TestFlight invitation or App Store listing will let users install it directly on their iPhone once an iOS build is distributed. See the [release guide](docs/distribution.md) for how to publish each part.
@@ -92,6 +119,6 @@ Markdown code blocks tagged `mermaid` render as diagrams in the iPhone reader. T
 
 Use `swift test` for the Mac package. The shared **PocketPort** Xcode scheme includes app tests. See the [implementation plan](docs/superpowers/plans/2026-11-21-pocketport-implementation-plan.md) for the full device matrix.
 
-The CLI uses Apple’s Network framework. The app uses Foundation’s Markdown parser and native SwiftUI block views, with Mermaid.js 12.3.0 for diagrams. Neither build needs an external Swift package.
+The CLI uses Apple’s Network framework. The app uses Foundation’s Markdown parser and native SwiftUI block views, with Mermaid.js 12.3.0 for diagrams. Both builds include a small, vendored Mbed TLS EC J-PAKE implementation for pairing and need no external Swift package.
 
 [Privacy Policy](https://pranav108.github.io/pocket-port/privacy.html) · [Terms of Use](https://pranav108.github.io/pocket-port/terms.html) · [Support](https://pranav108.github.io/pocket-port/)

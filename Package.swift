@@ -13,12 +13,19 @@ let package = Package(
         .library(name: "PocketPortProtocol", targets: ["PocketPortProtocol"]),
     ],
     targets: [
-        .target(name: "PocketPortProtocol"),
+        .target(
+            name: "CPocketPortPairing",
+            exclude: ["vendor/LICENSE"],
+            cSettings: [
+                .headerSearchPath("vendor/include"),
+            ]
+        ),
+        .target(name: "PocketPortProtocol", dependencies: ["CPocketPortPairing"]),
         .executableTarget(name: "PocketPortCLI", dependencies: ["PocketPortProtocol"]),
         .testTarget(name: "PocketPortCLITests", dependencies: ["PocketPortCLI"]),
         .testTarget(
             name: "PocketPortProtocolTests",
-            dependencies: ["PocketPortProtocol"],
+            dependencies: ["PocketPortProtocol", "CPocketPortPairing"],
             resources: [.process("Fixtures")]
         ),
     ]

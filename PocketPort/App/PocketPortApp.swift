@@ -6,6 +6,7 @@ import struct PocketPortProtocol.ShareMetadata
 struct PocketPortApp: App {
     @StateObject private var coordinator: ImportCoordinator
     @StateObject private var wifi: WiFiAvailability
+    @StateObject private var direct: DirectReceivingModel
     private let fixturesEnabled: Bool
 
     init() {
@@ -14,20 +15,24 @@ struct PocketPortApp: App {
         if let index = args.firstIndex(of: "--pocketport-ui-test"), args.indices.contains(index + 1) {
             let key = ShareMetadata.digest(of: Data(args[index + 1].utf8))
             let directory = FileManager.default.temporaryDirectory.appendingPathComponent("ui-" + key)
-            _coordinator = StateObject(wrappedValue: ImportCoordinator(store: ImportStore(root: directory), transfer: FixtureTransport()))
+            let store = ImportStore(root: directory)
+            _coordinator = StateObject(wrappedValue: ImportCoordinator(store: store, transfer: FixtureTransport()))
+            _direct = StateObject(wrappedValue: DirectReceivingModel(store: store, enabled: false))
             _wifi = StateObject(wrappedValue: WiFiAvailability(testOverride: !args.contains("--pocketport-ui-test-no-wifi")))
             fixturesEnabled = true
             return
         }
         #endif
-        _coordinator = StateObject(wrappedValue: ImportCoordinator(store: ImportStore(), transfer: TransferClient()))
+        let store = ImportStore()
+        _coordinator = StateObject(wrappedValue: ImportCoordinator(store: store, transfer: TransferClient()))
+        _direct = StateObject(wrappedValue: DirectReceivingModel(store: store))
         _wifi = StateObject(wrappedValue: WiFiAvailability())
         fixturesEnabled = false
     }
 
     var body: some Scene {
         WindowGroup {
-            ImportedFilesView(coordinator: coordinator, wifi: wifi, fixturesEnabled: fixturesEnabled)
+            ImportedFilesView(coordinator: coordinator, wifi: wifi, direct: direct, fixturesEnabled: fixturesEnabled)
                 .tint(.teal)
                 .modifier(LaunchTransition())
         }

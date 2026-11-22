@@ -104,6 +104,22 @@ actor ImportStore {
         return record
     }
 
+    func existingDirect(_ offer: DirectOffer, senderID: String) throws -> ImportRecord? {
+        let id = offer.importID(senderID: senderID)
+        guard let record = try existing(id: id) else { return nil }
+        guard record.filename == offer.filename, record.project == offer.project,
+              record.sha256 == offer.sha256, record.byteCount == offer.byteCount else { throw DirectError.conflict }
+        return record
+    }
+
+    func commitDirect(_ download: DownloadedFile, offer: DirectOffer, senderID: String) throws -> ImportRecord {
+        if let record = try existingDirect(offer, senderID: senderID) { return record }
+        let metadata = try offer.validate()
+        guard download.metadata == metadata, download.data.count == offer.byteCount else { throw DirectError.badMessage }
+        try DirectFileWire.validate(download.data, against: metadata)
+        return try commit(download, shareID: offer.importID(senderID: senderID))
+    }
+
     func share(id: UUID) throws -> SharedFile {
         let item = try preview(id: id)
         let exportID = UUID()

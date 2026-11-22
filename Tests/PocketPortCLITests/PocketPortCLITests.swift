@@ -273,3 +273,19 @@ final class PocketPortCLITests: XCTestCase {
         XCTFail("No body prefix received.")
     }
 }
+
+extension PocketPortCLITests {
+    func testDirectArgumentsAndLegacyInvocation() throws {
+        XCTAssertNil(try DirectCommand.parse(["--project", "A", "README.md"]))
+        XCTAssertNil(try DirectCommand.parse([]))
+        XCTAssertEqual(try DirectCommand.parse(["pair", "--alias", "Phone"]), .pair("phone"))
+        XCTAssertEqual(try DirectCommand.parse(["send", "notes/My file.md", "-t", "iphone,ipad"]),
+                       .send(file: "notes/My file.md", target: "iphone,ipad", project: nil))
+        XCTAssertEqual(try DirectCommand.parse(["send", "-t", "all"]), .send(file: nil, target: "all", project: nil))
+        XCTAssertEqual(try DirectCommand.parse(["send", "--", "-draft.html"]),
+                       .send(file: "-draft.html", target: nil, project: nil))
+        XCTAssertThrowsError(try DirectCommand.parse(["send", "-t"]))
+        XCTAssertThrowsError(try DirectCommand.parse(["send", "-t", "iphone", "--to", "ipad"]))
+        XCTAssertThrowsError(try DirectCommand.parse(["pair", "--alias", "all"]))
+    }
+}

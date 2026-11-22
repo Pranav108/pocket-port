@@ -147,3 +147,40 @@ final class ImportTests: XCTestCase {
         XCTAssertEqual(count, 0)
     }
 }
+
+extension ImportTests {
+    func testDirectRetryUsesPersistedImportAndRejectsConflictingOffer() async throws {
+        let store = ImportStore(root: root)
+        let file = try fixture()
+        let offer = DirectOffer(id: UUID(), metadata: file.metadata, byteCount: file.data.count)
+        let missing = try await store.existingDirect(offer, senderID: "first-mac")
+        XCTAssertNil(missing)
+        let first = try await store.commitDirect(file, offer: offer, senderID: "first-mac")
+        let offline = ImportStore(root: root)
+        let retry = try await offline.existingDirect(offer, senderID: "first-mac")
+        XCTAssertEqual(retry, first)
+        let second = try await offline.commitDirect(file, offer: offer, senderID: "second-mac")
+        XCTAssertNotEqual(first.id, second.id)
+        let conflicting = DirectOffer(id: offer.id, metadata: file.metadata, byteCount: file.data.count + 1)
+        do {
+            _ = try await offline.existingDirect(conflicting, senderID: "first-mac")
+            XCTFail("Conflicting metadata was acknowledged")
+        } catch DirectError.conflict {}
+        let records = try await offline.list()
+        XCTAssertEqual(records.count, 2)
+        XCTAssertEqual(records.map(\.format), [.markdown, .markdown])
+    }
+
+    func testDirectCorruptionIsNeverPersisted() async throws {
+        let store = ImportStore(root: root)
+        let file = try fixture()
+        let offer = DirectOffer(id: UUID(), metadata: file.metadata, byteCount: file.data.count)
+        let corrupted = DownloadedFile(data: Data(repeating: 65, count: file.data.count), metadata: file.metadata)
+        do {
+            _ = try await store.commitDirect(corrupted, offer: offer, senderID: "mac")
+            XCTFail("Corrupted bytes were persisted")
+        } catch DirectError.badMessage {}
+        let records = try await store.list()
+        XCTAssertTrue(records.isEmpty)
+    }
+}

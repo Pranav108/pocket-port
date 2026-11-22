@@ -11,6 +11,8 @@ struct Arguments {
     If this folder has several eligible files, pass a filename or path.
     Share Markdown, text, HTML, PDFs, and images on the same trusted Wi-Fi.
     The QR expires in three minutes. Keep the Mac lid open during sharing.
+
+    Run pocket-port pair to add a device or pocket-port send --help for direct sharing.
     """
     var path: String?
     var project: String?
@@ -86,7 +88,18 @@ enum Command {
     }
     static func main() {
         do {
-            let args = try Arguments(Array(CommandLine.arguments.dropFirst()))
+            let values = Array(CommandLine.arguments.dropFirst())
+            if let command = try DirectCommand.parse(values) {
+                Task {
+                    do { exit(try await command.run()) }
+                    catch {
+                        FileHandle.standardError.write(Data(("pocket-port: " + (error.localizedDescription) + "\n").utf8))
+                        exit(1)
+                    }
+                }
+                dispatchMain()
+            }
+            let args = try Arguments(values)
             if args.help { print(Arguments.help); return }
             let snapshot: FileSnapshot
             if let path = args.path {
