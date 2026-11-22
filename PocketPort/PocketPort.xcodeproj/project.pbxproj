@@ -11,26 +11,28 @@
 		01D72E298E77854DACE1793F /* ImportStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13680FB2105A63C29357B3CD /* ImportStore.swift */; };
 		12EE04BFA1C31D2F8E06B468 /* ShareMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */; };
 		28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E5E79DF0834291ADEBBD7C /* Assets.xcassets */; };
-		ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */; };
-		D40D5F0131954748A187AB49 /* LocalHTMLPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */; };
 		2AF32D4A993C6D789D7E0748 /* Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFA2A278847D4E2C6FC7986 /* Base64URL.swift */; };
 		35B3AD97FDA5AF424BA85EDD /* PocketPortProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190FCA0073315605D0EB6B32 /* PocketPortProtocol.framework */; };
 		3C5FFFDA5DA133143570B2B7 /* PocketPortUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634A24D715C87FB7948B53CE /* PocketPortUITests.swift */; };
 		4B1D6ADFC882B6FC023273AB /* MarkdownReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED3CE0528B35215AC8C844D /* MarkdownReaderTests.swift */; };
+		4B67C8D45F08405C989C5E54 /* Mermaid in Resources */ = {isa = PBXBuildFile; fileRef = 9D6CA64272E14B87A6FDF86E /* Mermaid */; };
 		5359A7B758F7B5B03FADF0D7 /* PocketPortApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DB614B881176BE95A139CD /* PocketPortApp.swift */; };
+		5C410ABF736598BDAD349F04 /* ScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C97B3E5B604D0BD858E0528 /* ScannerSheet.swift */; };
 		68D08FEE23174419AD173869 /* PocketPortTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB75CCA028416389A94350 /* PocketPortTheme.swift */; };
 		68D08FEE23174419AD173870 /* FilesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB75CCA028416389A94351 /* FilesSettingsView.swift */; };
 		68D08FEE23174419AD173871 /* WiFiAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FB75CCA028416389A94352 /* WiFiAvailability.swift */; };
-		5C410ABF736598BDAD349F04 /* ScannerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C97B3E5B604D0BD858E0528 /* ScannerSheet.swift */; };
 		6A04BF87E864A1D998A73021 /* ReaderStress.md in Resources */ = {isa = PBXBuildFile; fileRef = B017B0163DBF40010F9AD0D0 /* ReaderStress.md */; };
 		7424CFC9820E44A6147B0819 /* ImportedFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6733215EF67639BC75FC5EB /* ImportedFilesView.swift */; };
 		789A212408BC3F6A38EB6425 /* PocketPortProtocol.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 190FCA0073315605D0EB6B32 /* PocketPortProtocol.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85BDF4547BCE4D28B2ED39BD /* MermaidDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC37995E14D4B4E9B79906E /* MermaidDiagramView.swift */; };
 		8FC183E88FFD5132526289ED /* 2026-11-21-pocketport-implementation-plan.md in Resources */ = {isa = PBXBuildFile; fileRef = F9E94F6EA7F9B69F385EDF96 /* 2026-11-21-pocketport-implementation-plan.md */; };
 		A2C05BC0C3994C4C41647E3B /* ShareLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A7D322A277BDAAB9235B526 /* ShareLink.swift */; };
 		A9400C6406FB0C56A82AF080 /* TransferClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7C7D6A14E7DD9EB2061156 /* TransferClient.swift */; };
+		ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */; };
 		C39486CF7547EA0BA3F4E16B /* TransferClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A288C3FDBF0F5FB62CD43D /* TransferClientTests.swift */; };
 		C45E3FF6D157F0EB32B81466 /* TransferDevicePlan.md in Resources */ = {isa = PBXBuildFile; fileRef = EE0E393576F93CEC0C4A71E2 /* TransferDevicePlan.md */; };
 		CE83312113515E06933C26D3 /* ImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A9BF6D80D000377DE894D5 /* ImportTests.swift */; };
+		D40D5F0131954748A187AB49 /* LocalHTMLPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */; };
 		D63319FDCDB83F1F737A98AF /* PocketPortProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190FCA0073315605D0EB6B32 /* PocketPortProtocol.framework */; };
 		EBBC4C2585BB59357C7094ED /* MarkdownBlockMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AD670B5BA860D95E8092B2 /* MarkdownBlockMapper.swift */; };
 		FC7C1A58B8C14AD012835020 /* ImportCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47A8E4E658DEF82CCC23DD4 /* ImportCoordinator.swift */; };
@@ -92,18 +94,20 @@
 		5C4A362A314B27B628221975 /* PocketPortUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PocketPortUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		634A24D715C87FB7948B53CE /* PocketPortUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketPortUITests.swift; sourceTree = "<group>"; };
 		6ED3CE0528B35215AC8C844D /* MarkdownReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownReaderTests.swift; sourceTree = "<group>"; };
+		6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		70AD670B5BA860D95E8092B2 /* MarkdownBlockMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownBlockMapper.swift; sourceTree = "<group>"; };
 		7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalHTMLPreview.swift; sourceTree = "<group>"; };
+		7EC37995E14D4B4E9B79906E /* MermaidDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MermaidDiagramView.swift; sourceTree = "<group>"; };
 		80B85D22E6AB44003DD1267A /* CameraScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScanner.swift; sourceTree = "<group>"; };
-		83A288C3FDBF0F5FB62CD43D /* TransferClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferClientTests.swift; sourceTree = "<group>"; };
-		8C97B3E5B604D0BD858E0528 /* ScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerSheet.swift; sourceTree = "<group>"; };
 		82FB75CCA028416389A94350 /* PocketPortTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketPortTheme.swift; sourceTree = "<group>"; };
 		82FB75CCA028416389A94351 /* FilesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesSettingsView.swift; sourceTree = "<group>"; };
 		82FB75CCA028416389A94352 /* WiFiAvailability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiAvailability.swift; sourceTree = "<group>"; };
+		83A288C3FDBF0F5FB62CD43D /* TransferClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferClientTests.swift; sourceTree = "<group>"; };
+		8C97B3E5B604D0BD858E0528 /* ScannerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerSheet.swift; sourceTree = "<group>"; };
 		90E5E79DF0834291ADEBBD7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6FC454605D164D5486C25938 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		97B67628B81E0C5AF1312B88 /* PocketPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7D322A277BDAAB9235B526 /* ShareLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLink.swift; sourceTree = "<group>"; };
+		9D6CA64272E14B87A6FDF86E /* Mermaid */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Mermaid; sourceTree = "<group>"; };
 		AD43167981E1C7A6E32861D7 /* ShareMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMetadata.swift; sourceTree = "<group>"; };
 		AE7C7D6A14E7DD9EB2061156 /* TransferClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferClient.swift; sourceTree = "<group>"; };
 		B017B0163DBF40010F9AD0D0 /* ReaderStress.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReaderStress.md; sourceTree = "<group>"; };
@@ -218,7 +222,9 @@
 			children = (
 				70AD670B5BA860D95E8092B2 /* MarkdownBlockMapper.swift */,
 				01F702E832900A5F964B3878 /* ReaderView.swift */,
+				7EC37995E14D4B4E9B79906E /* MermaidDiagramView.swift */,
 				7AF31AA5858E4A6096D7B041 /* LocalHTMLPreview.swift */,
+				9D6CA64272E14B87A6FDF86E /* Mermaid */,
 			);
 			path = Reader;
 			sourceTree = "<group>";
@@ -378,15 +384,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		397A87A12D364515B36627E1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */,
-				ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		240A07455AF7B8A885D4EBED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,6 +391,16 @@
 				8FC183E88FFD5132526289ED /* 2026-11-21-pocketport-implementation-plan.md in Resources */,
 				6A04BF87E864A1D998A73021 /* ReaderStress.md in Resources */,
 				C45E3FF6D157F0EB32B81466 /* TransferDevicePlan.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		397A87A12D364515B36627E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E41B57C8A745EFBF917452 /* Assets.xcassets in Resources */,
+				ABA80D57FE8848F09A1D3F64 /* PrivacyInfo.xcprivacy in Resources */,
+				4B67C8D45F08405C989C5E54 /* Mermaid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +430,7 @@
 				68D08FEE23174419AD173871 /* WiFiAvailability.swift in Sources */,
 				EBBC4C2585BB59357C7094ED /* MarkdownBlockMapper.swift in Sources */,
 				FD8B7A12C61FF48A40C0A924 /* ReaderView.swift in Sources */,
+				85BDF4547BCE4D28B2ED39BD /* MermaidDiagramView.swift in Sources */,
 				D40D5F0131954748A187AB49 /* LocalHTMLPreview.swift in Sources */,
 				5C410ABF736598BDAD349F04 /* ScannerSheet.swift in Sources */,
 				5359A7B758F7B5B03FADF0D7 /* PocketPortApp.swift in Sources */,
@@ -609,13 +617,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SJDLGRNFMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PocketPort;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan the QR code shown by pocket-port on your Mac.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Connect to your Mac over Wi-Fi to import files.";
-				CURRENT_PROJECT_VERSION = 4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -725,13 +735,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = SJDLGRNFMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PocketPort;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan the QR code shown by pocket-port on your Mac.";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Connect to your Mac over Wi-Fi to import files.";
-				CURRENT_PROJECT_VERSION = 4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

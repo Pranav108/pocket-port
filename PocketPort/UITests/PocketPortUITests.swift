@@ -51,6 +51,25 @@ final class PocketPortUITests: XCTestCase {
     }
 
     @MainActor
+    func testMermaidDiagramAndInvalidSourceFallback() {
+        let app = launchWithFixtures()
+        importFixture("fixture-project-a", heading: "Project A plan", in: app)
+
+        let diagram = app.staticTexts["Mac"]
+        for _ in 0..<4 where !diagram.exists {
+            app.swipeUp()
+        }
+        XCTAssertTrue(diagram.waitForExistence(timeout: 12))
+
+        let fallback = app.staticTexts["Couldn’t render this Mermaid diagram."]
+        for _ in 0..<4 where !fallback.exists {
+            app.swipeUp()
+        }
+        XCTAssertTrue(fallback.waitForExistence(timeout: 12))
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "This fence contains an invalid diagram.")).firstMatch.exists)
+    }
+
+    @MainActor
     func testStaticHTMLPreviewAndOfflineReopen() {
         let app = launchWithFixtures()
         let heading = app.descendants(matching: .any)

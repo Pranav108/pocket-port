@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src pocketport-mermaid:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>Mermaid diagram</title>
+  <style>
+    body { margin: 0; padding: 12px; }
+    #diagram { display: table; margin: auto; }
+    #diagram svg { display: block; }
+  </style>
+  <script defer src="mermaid.min.js"></script>
+  <script defer src="renderer.js"></script>
+</head>
+<body>
+  <div id="diagram"></div>
+</body>
+</html>

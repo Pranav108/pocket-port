@@ -177,12 +177,13 @@ private struct BlockView: View {
                     }
                 }
             }.accessibilityElement(children: .contain)
-        case .codeBlock:
-            ScrollView(.horizontal) {
-                Text(verbatim: String(block.text.characters))
-                    .font(.system(.callout, design: .monospaced))
-                    .fixedSize().textSelection(.enabled).padding(10)
-            }.background(.secondary.opacity(0.09), in: RoundedRectangle(cornerRadius: 8))
+        case .codeBlock(let languageHint):
+            let source = String(block.text.characters)
+            if languageHint?.lowercased() == "mermaid" {
+                MermaidDiagramView(blockID: block.id, source: source)
+            } else {
+                MarkdownCodeBlock(source: source)
+            }
         case .table(let columns):
             ScrollView(.horizontal) {
                 Grid(alignment: .leading, horizontalSpacing: 18, verticalSpacing: 8) {
@@ -226,5 +227,20 @@ private struct BlockView: View {
         } else {
             Text(ordered ? "\(ordinal)." : "•").foregroundStyle(.secondary)
         }
+    }
+}
+
+struct MarkdownCodeBlock: View {
+    let source: String
+
+    var body: some View {
+        ScrollView(.horizontal) {
+            Text(verbatim: source)
+                .font(.system(.callout, design: .monospaced))
+                .fixedSize()
+                .textSelection(.enabled)
+                .padding(10)
+        }
+        .background(.secondary.opacity(0.09), in: RoundedRectangle(cornerRadius: 8))
     }
 }

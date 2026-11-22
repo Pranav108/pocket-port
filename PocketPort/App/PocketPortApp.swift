@@ -128,6 +128,18 @@ struct FixtureTransport: ShareTransferring {
         ```
 
         See [the guide](https://example.com/guide).
+
+        ## Transfer flow
+
+        ```mermaid
+        flowchart TD
+            Mac[Mac helper] --> QR[Scan QR code]
+            QR --> Phone[Save to iPhone]
+        ```
+
+        ```mermaid
+        This fence contains an invalid diagram.
+        ```
         """
         let data = Data(content.utf8)
         return try DownloadedFile(data: data, metadata: ShareMetadata(filename: "PLAN.md", project: project, sha256: ShareMetadata.digest(of: data)))

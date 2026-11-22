@@ -96,4 +96,21 @@ final class MarkdownReaderTests: XCTestCase {
         }
         XCTAssertTrue(try MarkdownBlockMapper.blocks(from: "").isEmpty)
     }
+
+    func testMermaidFenceRetainsDiagramSource() throws {
+        let blocks = try MarkdownBlockMapper.blocks(from: """
+        > ```mermaid
+        > flowchart LR
+        >     A["Draft <notes>"] --> B["Review"]
+        > ```
+
+        ```swift
+        print("ordinary code")
+        ```
+        """)
+        let diagram = try XCTUnwrap(blocks.first?.children.first)
+        XCTAssertEqual(diagram.kind, .codeBlock(languageHint: "mermaid"))
+        XCTAssertEqual(String(diagram.text.characters), "flowchart LR\n    A[\"Draft <notes>\"] --> B[\"Review\"]\n")
+        XCTAssertEqual(blocks.last?.kind, .codeBlock(languageHint: "swift"))
+    }
 }

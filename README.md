@@ -78,6 +78,10 @@ On the phone, open **PocketPort**, tap **Scan**, and point the camera at the QR 
 - A share expires after three minutes. Run `pocket-port` again for a fresh QR. Keep the Mac’s lid open while sharing.
 - Local linked assets are outside v1. PocketPort displays Markdown image alt text and keeps the source file as imported.
 
+## Mermaid diagrams
+
+Markdown code blocks tagged `mermaid` render as diagrams in the iPhone reader. The renderer is bundled with the app, so diagrams work offline. Expand **Diagram source** to see the original code. If rendering fails, PocketPort shows that code directly.
+
 ## Verify on an iPhone
 
 1. Join the same trusted Wi-Fi with both devices. Disconnect the router’s WAN connection while leaving local Wi-Fi on. Turn off cellular data on the phone.
@@ -88,6 +92,6 @@ On the phone, open **PocketPort**, tap **Scan**, and point the camera at the QR 
 
 Use `swift test` for the Mac package. The shared **PocketPort** Xcode scheme includes app tests. See the [implementation plan](docs/superpowers/plans/2026-11-21-pocketport-implementation-plan.md) for the full device matrix.
 
-The CLI uses Apple’s Network framework. The app uses Foundation’s Markdown parser and native SwiftUI block views. Neither build needs an external Swift package.
+The CLI uses Apple’s Network framework. The app uses Foundation’s Markdown parser and native SwiftUI block views, with Mermaid.js 12.3.0 for diagrams. Neither build needs an external Swift package.
 
 [Privacy Policy](https://pranav108.github.io/pocket-port/privacy.html) · [Terms of Use](https://pranav108.github.io/pocket-port/terms.html) · [Support](https://pranav108.github.io/pocket-port/)
